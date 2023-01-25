@@ -1,0 +1,14 @@
+services:
+  quarkus-loom:
+    image: olze/quarkus-loom:1.0.0-SNAPSHOT
+    container_name: quarkus-loom
+    hostname: quarkus-loom
+    ports:
+      - 8080:8080
+
+  postgres:
+    image: postgres-petclinic
+    container_name: postgres-petclinic
+    hostname: postgres-petclinic
+    ports:
+      - 5342:5342
