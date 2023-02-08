@@ -10,5 +10,5 @@ COPY target/quarkus-app/quarkus/ /deployments/quarkus/
 
 EXPOSE 8080
 
-CMD ["java", "--enable-preview", "-Djdk.tracePinnedThreads=full", "--add-opens=java.base/java.lang=ALL-UNNAMED", "-XX:StartFlightRecording=dumponexit=true,filename=/home/jfr/", "-jar", "/deployments/quarkus-run.jar"]
+CMD ["java", "--enable-preview", "-Djdk.tracePinnedThreads=full", "-XX:StartFlightRecording=dumponexit=true,filename=/home/jfr/", "-jar", "/deployments/quarkus-run.jar"]
 

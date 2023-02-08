@@ -45,11 +45,6 @@
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-netty-loom-adaptor</artifactId>
-      <version>2.15.3.Final</version>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
       <artifactId>quarkus-arc</artifactId>
     </dependency>
     <dependency>
@@ -99,9 +94,8 @@
           <target>${maven.compiler.target}</target>
           <compilerArgs>
             <arg>--enable-preview</arg>
-            <arg>-Dnet.bytebuddy.experimental</arg>
           </compilerArgs>
-          <jvmArgs>--enable-preview -Djdk.tracePinnedThreads=full --add-opens java.base/java.lang=ALL-UNNAMED</jvmArgs>
+          <jvmArgs>--enable-preview -Djdk.tracePinnedThreads=full</jvmArgs>
         </configuration>
       </plugin>
     </plugins>
