@@ -19,14 +19,12 @@ public class PetResource {
 
     @GET
     @Path("/blocking")
-    @Blocking
     public List<Pet> getPetsBlocking() {
         return petRepository.findAllBlocking();
     }
 
     @GET
     @Path("/virtualThread")
-    @Blocking
     @RunOnVirtualThread
     public List<Pet> getPets() {
         return petRepository.findAllAwait();
@@ -34,7 +32,6 @@ public class PetResource {
 
     @GET
     @Path("/reactive")
-    @NonBlocking
     public Uni<List<Pet>> getPetsReactive() {
         return petRepository.findAllReactive();
     }
@@ -47,14 +44,12 @@ public class PetResource {
 
     @GET
     @Path("/sleep")
-    @Blocking
     public String sleep() throws InterruptedException {
         Thread.sleep(500);
         return "Hello Pet";
     }
 
     @GET
-    @Blocking
     @RunOnVirtualThread
     @Path("/sleepVirtual")
     public String sleepVirtual() throws InterruptedException {

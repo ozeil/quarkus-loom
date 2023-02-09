@@ -1,5 +1,6 @@
 package com.oz.loomtest;
 
+import io.agroal.api.AgroalDataSource;
 import io.smallrye.mutiny.Uni;
 import io.vertx.mutiny.pgclient.PgPool;
 import io.vertx.mutiny.sqlclient.Row;
@@ -7,7 +8,6 @@ import io.vertx.mutiny.sqlclient.RowSet;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -21,7 +21,7 @@ public class PetRepository {
     PgPool reactiveClient;
 
     @Inject
-    DataSource jdbcDataSource;
+    AgroalDataSource jdbcDataSource;
     
     private static final String SELECT_ALL_PETS_QUERY = "SELECT * FROM pets";
 
@@ -40,7 +40,7 @@ public class PetRepository {
             try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_PETS_QUERY)) {
                 var result = statement.executeQuery();
                 while (result.next()) {
-                    pets.add(new Pet(result.getLong("id"), result.getString("name")));
+                    pets.add(Pet.from(result));
                 }
             }
         } catch (SQLException e) {
