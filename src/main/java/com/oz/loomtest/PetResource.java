@@ -1,8 +1,5 @@
 package com.oz.loomtest;
 
-import io.quarkus.logging.Log;
-import io.smallrye.common.annotation.Blocking;
-import io.smallrye.common.annotation.NonBlocking;
 import io.smallrye.common.annotation.RunOnVirtualThread;
 import io.smallrye.mutiny.Uni;
 
